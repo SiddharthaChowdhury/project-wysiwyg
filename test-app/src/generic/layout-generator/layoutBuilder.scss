@@ -1,0 +1,50 @@
+.block-lb {
+  display: flex;
+  margin: 2px;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px dashed orange;
+  background-color: white;
+  min-height: 25px;
+
+  &.lbf-hovered {
+    cursor: pointer;
+    background-color: #fdfff8;
+    outline: 2px solid orange;
+    padding: 5px;
+  }
+  &.lbf-selected {
+    cursor: pointer;
+    background-color: #e1fdff;
+    padding: 5px;
+    border: 1px solid black;
+    min-height: 30px;
+  }
+
+  &.block-lb-parent {
+    min-height: 100px;
+  }
+}
+
+// layout-builder-final
+.block-lbf {
+  display: flex;
+  margin: 2px;
+  padding: 2px;
+  min-height: 30px;
+  box-sizing: border-box;
+}
+
+// ---------------------------
+
+.block-lb-100 {
+  width: 100%;
+}
+
+.block-lb-30 {
+  width: 30%;
+}
+
+.block-lb-40 {
+  width: 40%;
+}
