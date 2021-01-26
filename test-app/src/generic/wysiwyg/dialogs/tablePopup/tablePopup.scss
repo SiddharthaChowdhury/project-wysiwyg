@@ -1,0 +1,75 @@
+.wysiwyg-table-popup {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5px;
+  padding-bottom: 5px;
+
+  .wysiwyg-table-popup-input-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 5px;
+
+      label {
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 50px;
+        text-align: center;
+      }
+    }
+  }
+
+  .wysiwyg-table-popup-selection-cell{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid silver;
+    margin-right: 5px;
+    background-color: #aaaaaa;
+    cursor: pointer;
+  }
+  .wysiwyg-table-popup-selection-cell-extra {
+    background-color: #FFFFFF;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #dadada;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  .wysiwyg-table-popup-btn-cont{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding-right: 5px;
+
+    div {
+      font-size: 12px;
+      margin-right: auto;
+    }
+
+    button {
+      margin-left: auto;
+      border-radius: 3px;
+      border: 1px solid silver;
+      background-color: #FFFFFF;
+      color: black;
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+
+  }
+}

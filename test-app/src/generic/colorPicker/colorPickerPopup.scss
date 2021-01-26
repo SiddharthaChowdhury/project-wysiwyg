@@ -1,0 +1,44 @@
+@import "../../variables";
+.color-picker-popup-trigger {
+  border: 1px solid silver;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 3px;
+  max-width: 100px;
+
+  &-label {
+    margin: 0 10px 0 3px;
+  }
+
+  &-color {
+    width: 50px;
+    height: 20px;
+    border-radius: 3px;
+  }
+}
+
+.color-picker-popup{
+  display: flex;
+  flex-direction: column;
+
+  &-head {
+    display: flex;
+    align-items: center;
+    color: $InputLabel;
+    margin-bottom: 0.5rem;
+
+    &-label {
+      margin-right: 10px;
+      font-weight: 600;
+    }
+
+    &-header {
+      margin-top: 4px;
+      font-size: 12px;
+      margin-right: 10px;
+    }
+  }
+}

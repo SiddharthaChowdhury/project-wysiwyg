@@ -1,0 +1,1 @@
+`npm i -S @fortawesome/fontawesome-svg-core @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons lodash.debounce`

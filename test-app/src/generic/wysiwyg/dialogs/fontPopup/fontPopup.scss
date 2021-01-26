@@ -1,0 +1,45 @@
+table {
+}
+
+.wysiwyg-font-size {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+
+  div {
+    cursor: pointer;
+    &:hover {
+      background-color: #d9d9d9;
+    }
+  }
+
+  &-h1 {
+    font-size: xx-large;
+  }
+  &-h2 {
+    font-size: x-large;
+  }
+  &-h3 {
+    font-size: larger;
+  }
+  &-normal {
+    font-size: medium;
+  }
+}
+
+.wysiwyg-font-color {
+  &-fore {
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px silver solid;
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+  &-back {
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px silver solid;
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+}

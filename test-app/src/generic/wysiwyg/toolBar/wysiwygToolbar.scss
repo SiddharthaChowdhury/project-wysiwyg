@@ -1,0 +1,26 @@
+.w-toolbar{
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  &-group {
+    display: flex;
+    margin-right: 5px;
+
+    button {
+      padding: 5px 8px;
+      background-color: #fff;
+      border: 1px solid silver;
+      border-radius: 3px;
+      margin: 0 1px;
+      cursor: pointer;
+      &:hover {
+        background-color: #fafafa;
+      }
+    }
+  }
+}
+
+.button-is-active {
+  background: #dedada !important;
+}
