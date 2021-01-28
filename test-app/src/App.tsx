@@ -1,11 +1,9 @@
 import React from 'react';
 import { LayoutBuilder } from './generic/layout-generator/LayoutBuilder';
 import { Wysiwyg } from './generic/wysiwyg/Wysiwyg';
-import loader from './spriteLoader/loader';
 
-function App() {
+const App = () => {
 
-  loader();
   return (
     <div className={"App"}>
       <h1>Hello</h1>

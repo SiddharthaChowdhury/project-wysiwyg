@@ -77,7 +77,7 @@ export class WysiwygContent extends React.Component<IWysiwygContentProps> {
         this.detectSelection(rangeSel);
         this.props.trackEnabledToolbarProperties();
 
-        const [range, sel] = rangeSel;
+        const sel = rangeSel[1];
         const suggestionInfo: ISuggestionKeywordInfo | undefined = utilSuggestion.isSuggestionInvoked(sel);
 
         if(suggestionInfo && e.key !== "Shift") {

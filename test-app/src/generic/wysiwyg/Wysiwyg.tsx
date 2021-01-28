@@ -136,7 +136,7 @@ export class Wysiwyg extends React.Component<IWysiwygProps, IWysiwygOwnState> {
         const {cursorSelection} = this.state;
         const self = this;
 
-        const [range, currentSelection] = cursorSelection;
+        const currentSelection = cursorSelection[1];
         const editorNode = this.editorRef.current;
         const nodes: {nodeName: string, align?: string}[] = [];
 

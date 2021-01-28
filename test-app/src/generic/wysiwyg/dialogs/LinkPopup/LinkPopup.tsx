@@ -1,7 +1,5 @@
 import React from 'react';
 import './linkPopup.scss';
-import { utilWysiwyg } from '../../utilWysiwyg';
-import { IdEditorCommandCode } from '../../IdEditorCommandCode';
 
 interface ILinkPopupOwnState {
     link: string;

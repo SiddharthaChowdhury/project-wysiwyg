@@ -17,7 +17,6 @@ class UtilSuggestion {
     private readonly SUGGESTION_OVERLAY_CLASS = 'wysiwyg-container-suggestion-overlay';
 
     public isSuggestionInvoked = (selection: Selection): ISuggestionKeywordInfo | undefined => {
-        const self = this;
 
         if(!selection || !selection.focusNode || !selection.anchorNode) {
             return;

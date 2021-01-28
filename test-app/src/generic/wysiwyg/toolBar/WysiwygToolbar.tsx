@@ -5,7 +5,7 @@ import {
     faAlignJustify,
     faAlignLeft,
     faAlignRight,
-    faBold, faEraser, faFont,
+    faEraser, faFont,
     faItalic, faLink,
     faListOl,
     faListUl,
@@ -19,7 +19,8 @@ import {IdPopupAlign, Popup} from "../../popup/Popup";
 import {FontPopup} from "../dialogs/fontPopup/FontPopup";
 import { IWysiwygToolbarProperties } from "../Wysiwyg";
 import { LinkPopup } from "../dialogs/LinkPopup/LinkPopup";
-import { utilWysiwyg } from "../utilWysiwyg";
+import loader, { ILoaderDone, ILoaderFormat } from "../../spriteLoader/loader";
+import { spriteToPiece } from "../../spriteLoader/spriteToPiece";
 
 interface IWysiwygToolbarProps {
     editorRef: RefObject<HTMLDivElement>;
@@ -30,6 +31,30 @@ interface IWysiwygToolbarProps {
 }
 
 export const WysiwygToolbar: React.FC<IWysiwygToolbarProps> = ({execute, editorRef, selection, toolbarProperties, trackEnabledToolbarProperties}) => {
+    const [asset, setAsset] = React.useState<any>(null);
+
+    React.useEffect(() => {
+        // SPRITE from: https://www.facetstudios.com/sprite-generator;
+        const payload: ILoaderFormat = {
+            json: {
+                sprite: "/assets/sprite.json"
+            },
+            // image: {
+            //     sprite : "/assets/editorSpritesheet.png"
+            // }
+        }
+        
+        loader(payload,  (result: ILoaderDone) => {
+            const {json}: any = result;
+
+            
+            const doneSplitting = (data: any) => {
+                console.log('Splitting DONE >>>>>>>> ', data);
+                setAsset(data);
+            };
+            spriteToPiece("/assets/sprite.png", json.sprite.data, doneSplitting)
+        });
+    }, []);
 
     const handleExecute = (command: IdEditorCommandCode, defaultValue?: any) => {
         execute(command, defaultValue);
@@ -81,11 +106,25 @@ export const WysiwygToolbar: React.FC<IWysiwygToolbarProps> = ({execute, editorR
     };
 
     const onLinkAdd = (link: string, text?:string) => {
-      // if(utilWysiwyg.canExecuteCommand(IdEditorCommandCode.insertHTML)) {
-      //     handleExecute(IdEditorCommandCode.insertHTML, '<a href="' + link + '" target="_blank">' + text + '</a>')
-      // }
-
         handleExecute(IdEditorCommandCode.createLink, link);
+    }
+
+    const getButtonIconStyle = (name: string): React.CSSProperties => {
+        if(!asset) {
+            return {};
+        }
+
+        return {
+            backgroundImage: `url('${asset[name]}')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            width: '30px',
+            height: '30px',
+        }
+    }
+
+    if(!asset) {
+        return <div>Please wait...</div>
     }
 
     return (
@@ -94,7 +133,7 @@ export const WysiwygToolbar: React.FC<IWysiwygToolbarProps> = ({execute, editorR
                 <Button style={{backgroundColor: "rgb(200, 219, 247)"}} onClick={() => {handleExecute(IdEditorCommandCode.removeFormat)}}><Fa icon={faEraser} /></Button>
             </div>
             <div className={"w-toolbar-font-style w-toolbar-group"}>
-                <Button className={`${toolbarProperties.isB ? 'button-is-active': ''}`} onClick={() => handleExecute(IdEditorCommandCode.bold)}><Fa icon={faBold} /></Button>
+                <Button className={`${toolbarProperties.isB ? 'button-is-active': ''}`} onClick={() => handleExecute(IdEditorCommandCode.bold)} style={getButtonIconStyle('bold')}></Button>
                 <Button className={`${toolbarProperties.isI ? 'button-is-active': ''}`} onClick={() => handleExecute(IdEditorCommandCode.italic)}><Fa icon={faItalic} /></Button>
                 <Button className={`${toolbarProperties.isU ? 'button-is-active': ''}`} onClick={() => handleExecute(IdEditorCommandCode.underline)}><Fa icon={faUnderline} /></Button>
                 <Button className={`${toolbarProperties.isSTRIKE ? 'button-is-active': ''}`} onClick={() => handleExecute(IdEditorCommandCode.strikeThrough)}><Fa icon={faStrikethrough} /></Button>
